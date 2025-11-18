@@ -1,0 +1,8 @@
+Przy używaniu biblioteki należy najpierw:
+- Użyć funkcji static inline void SevenSeg_HW_Init(void) - żeby zainicjalizować odpowiednie piny
+- Stworzyć strukturę odpowiadającą za wyświetlacz: SevenSeg_Handle seg; (w każdej funkcji *h to wksaźnik na strukturę, czyli należy jako argument podawać &seg)
+- Użyć funkjcji void SevenSeg_Init_Set_Segments(SevenSeg_Handle *h) - żeby przypisać odpowiednie piny i porty do struktury
+- W main używać void SevenSeg_DisplayNumber(SevenSeg_Handle *h, uint16_t num);
+- Natomiast w przerwaniu od zegara* void SevenSeg_Task(SevenSeg_Handle *h);
+
+*Ustawianie zegara: Należy ustawić zegar z przerwaniami tak żeby przerwanie pojawiało się co 10-20ms, wówczas multipleksowanie będzie możliwe
