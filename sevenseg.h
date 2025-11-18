@@ -17,9 +17,9 @@ typedef struct {
 
 
 // ---- API ----
-void SevenSeg_Init_Set_Segments(SevenSeg_Handle *h);
-void SevenSeg_Init(SevenSeg_Handle *h);
-void SevenSeg_DisplayNumber(SevenSeg_Handle *h, uint16_t num);
-void SevenSeg_Task(SevenSeg_Handle *h);
+void SevenSeg_Init_Set_Segments(SevenSeg_Handle *h); // Przypisuje odpowiednie piny i porty jako segmenty wyświetlacza
+void SevenSeg_Init(SevenSeg_Handle *h); // Ustawia aktualnie wyświetlaną cyfrę na pierwszą i wyłącza wszystkie comy
+void SevenSeg_DisplayNumber(SevenSeg_Handle *h, uint16_t num); // Rozbija liczbę na poszczególne cyfry
+void SevenSeg_Task(SevenSeg_Handle *h); // Faktyczne działanie wyświetlacza wywoływane w przerwaniu timera
 
 #endif

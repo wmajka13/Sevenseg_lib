@@ -18,17 +18,19 @@ static const uint8_t SEGMENT_LUT[10] = {
 
 // Przypisanie pinów i portów
 void SevenSeg_Init_Set_Segments(SevenSeg_Handle *h) {
-    h->Segments = {
-	{ SEG_A_GPIO_Port, SEG_A_Pin },
-	{ SEG_B_GPIO_Port, SEG_B_Pin },
-	{ SEG_C_GPIO_Port, SEG_C_Pin },
-	{ SEG_D_GPIO_Port, SEG_D_Pin },
-	{ SEG_E_GPIO_Port, SEG_E_Pin },
-	{ SEG_F_GPIO_Port, SEG_F_Pin },
-	{ SEG_G_GPIO_Port, SEG_G_Pin },
-	{ SEG_DP_GPIO_Port, SEG_DP_Pin },
-};
+    h->segments[0] = (seg_pin_t){SEG_A_GPIO_Port, SEG_A_Pin};
+    h->segments[1] = (seg_pin_t){SEG_B_GPIO_Port, SEG_B_Pin};
+    h->segments[2] = (seg_pin_t){SEG_C_GPIO_Port, SEG_C_Pin};
+    h->segments[3] = (seg_pin_t){SEG_D_GPIO_Port, SEG_D_Pin};
+    h->segments[4] = (seg_pin_t){SEG_E_GPIO_Port, SEG_E_Pin};
+    h->segments[5] = (seg_pin_t){SEG_F_GPIO_Port, SEG_F_Pin};
+    h->segments[6] = (seg_pin_t){SEG_G_GPIO_Port, SEG_G_Pin};
+    h->segments[7] = (seg_pin_t){SEG_DP_GPIO_Port, SEG_DP_Pin};
 
+    h->digits[0] = (seg_pin_t){COM_1_GPIO_Port, COM_1_Pin};
+    h->digits[1] = (seg_pin_t){COM_2_GPIO_Port, COM_2_Pin};
+    h->digits[2] = (seg_pin_t){COM_3_GPIO_Port, COM_3_Pin};
+    h->digits[3] = (seg_pin_t){COM_4_GPIO_Port, COM_4_Pin};
 }
 
 
@@ -41,7 +43,7 @@ void SevenSeg_Init(SevenSeg_Handle *h) {
     }
 }
 
-
+//Ustawia odpowiednie segmenty żeby wyświetlić daną cyfrę
 static void SevenSeg_SetSegments(SevenSeg_Handle *h, uint8_t number) {
     uint8_t binary = SEGMENT_LUT[number];
 

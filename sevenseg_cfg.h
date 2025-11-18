@@ -39,7 +39,9 @@
 #define COM_4_Pin GPIO_PIN_8
 #define COM_4_GPIO_Port GPIOC
 
-// ---- Funkcja inicjalizująca wszystkie piny wyświetlacza ----
+/* ---- Funkcja inicjalizująca wszystkie piny wyświetlacza ----
+ * Używamy jej w main() przed wywołaniem SevenSeg_Init_Set_Segments()
+ */
 static inline void SevenSeg_HW_Init(void)
 {
     // Włącz zegar GPIOC
@@ -48,14 +50,16 @@ static inline void SevenSeg_HW_Init(void)
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
     // wyzeruj wszystkie piny
-    HAL_GPIO_WritePin(GPIOC, SEG_G_Pin|SEG_D_Pin|SEG_E_Pin|SEG_C_Pin
-                            |SEG_B_Pin|SEG_F_Pin|SEG_A_Pin|SEG_DP_Pin
-                            |COM_4_Pin|COM_3_Pin|COM_2_Pin|COM_1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOC, 
+        SEG_A_Pin | SEG_B_Pin | SEG_C_Pin | SEG_D_Pin | 
+        SEG_E_Pin | SEG_F_Pin | SEG_G_Pin | SEG_DP_Pin |
+        COM_1_Pin | COM_2_Pin | COM_3_Pin | COM_4_Pin, GPIO_PIN_RESET);
 
     // ustaw piny jako wyjścia push-pull
-    GPIO_InitStruct.Pin = SEG_G_Pin|SEG_D_Pin|SEG_E_Pin|SEG_C_Pin
-                            |SEG_B_Pin|SEG_F_Pin|SEG_A_Pin|SEG_DP_Pin
-                            |COM_4_Pin|COM_3_Pin|COM_2_Pin|COM_1_Pin;
+    GPIO_InitStruct.Pin = 
+        SEG_A_Pin | SEG_B_Pin | SEG_C_Pin | SEG_D_Pin |
+        SEG_E_Pin | SEG_F_Pin | SEG_G_Pin | SEG_DP_Pin |
+        COM_1_Pin | COM_2_Pin | COM_3_Pin | COM_4_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
