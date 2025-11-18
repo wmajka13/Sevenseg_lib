@@ -14,3 +14,45 @@ Przy używaniu biblioteki należy najpierw:
 - Natomiast w przerwaniu od zegara* void SevenSeg_Task(SevenSeg_Handle *h);
 
 *Ustawianie zegara: Należy ustawić zegar z przerwaniami tak żeby przerwanie pojawiało się co 1ms, wówczas multipleksowanie będzie możliwe
+
+
+Przykład działającego maina:
+
+int main(void)
+{
+
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+  SevenSeg_HW_Init();
+  SevenSeg_Init_Set_Segments(&seg);
+  SevenSeg_Init(&seg);
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  MX_TIM10_Init();
+  /* USER CODE BEGIN 2 */
+  SevenSeg_DisplayNumber(&seg, 8);
+  HAL_TIM_Base_Start_IT(&htim10);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
