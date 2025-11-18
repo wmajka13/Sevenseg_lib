@@ -1,3 +1,9 @@
+Najpierw należy wrzucić pliki .h do folderu Inc, natomiast .c do Src
+
+Dalej w main.c zrobić:
+#include "sevenseg_cfg.h"
+#include "sevenseg.h"
+
 Przy używaniu biblioteki należy najpierw:
 - Użyć funkcji static inline void SevenSeg_HW_Init(void) - żeby zainicjalizować odpowiednie piny
 - Stworzyć strukturę odpowiadającą za wyświetlacz: SevenSeg_Handle seg; (w każdej funkcji *h to wksaźnik na strukturę, czyli należy jako argument podawać &seg)

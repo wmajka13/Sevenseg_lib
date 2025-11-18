@@ -1,5 +1,5 @@
 #include "sevenseg.h"
-#include "sevenseg_cfg"
+#include "sevenseg_cfg.h"
 
 
 // LUT 0–9
