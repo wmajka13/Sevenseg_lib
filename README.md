@@ -1,3 +1,5 @@
+Biblioteka działa dla wyświetlacza siedmiosegmentowego umieszczonego na rozszerzeniu do stm32: KA-Nucleo-Multisensor (https://kamami.pl/kamod-kamami/563404-ka-nucleo-multisensor-shield-dla-stm32-nucleo-z-wyswietlaczem-i-czujnikami-mems-5906623433278.html)
+
 Najpierw należy wrzucić pliki .h do folderu Inc, natomiast .c do Src
 
 Dalej w main.c zrobić:
@@ -11,4 +13,4 @@ Przy używaniu biblioteki należy najpierw:
 - W main używać void SevenSeg_DisplayNumber(SevenSeg_Handle *h, uint16_t num);
 - Natomiast w przerwaniu od zegara* void SevenSeg_Task(SevenSeg_Handle *h);
 
-*Ustawianie zegara: Należy ustawić zegar z przerwaniami tak żeby przerwanie pojawiało się co 10-20ms, wówczas multipleksowanie będzie możliwe
+*Ustawianie zegara: Należy ustawić zegar z przerwaniami tak żeby przerwanie pojawiało się co 1ms, wówczas multipleksowanie będzie możliwe
